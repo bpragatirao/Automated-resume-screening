@@ -1,0 +1,183 @@
+Resource Requirements:
+
+-----
+
+1. Hardware Requirements
+
+1.1 Development System (Minimum)
+
+Component : Specification
+CPU	Intel i5 / AMD Ryzen 5 (6 cores or higher recommended)
+RAM	16 GB (Minimum 8 GB)
+Storage	256 GB SSD (for datasets, models, embeddings)
+OS	Ubuntu 20.04+ / Windows 11
+Suitable for:
+Preprocessing
+Traditional ML
+Small NLP models (TF-IDF, spaCy)
+
+1.2 GPU Requirements (Recommended for NITK-Level Work)
+
+Using Transformer-based models (BERT / SBERT) significantly benefits from GPU acceleration.
+
+Recommended GPU Options
+
+GPU	VRAM	            Suitable Use
+NVIDIA GTX 1660	6 GB	Fine-tuning small BERT models
+NVIDIA RTX 2060	6 GB	Medium-scale NLP tasks
+NVIDIA RTX 3060	12 GB	Ideal for this project
+NVIDIA RTX 3080	10 GB	Large batch fine-tuning
+NVIDIA Tesla T4	16 GB	Cloud / lab environments
+Minimum VRAM: 6 GB
+Recommended VRAM: 8–12 GB
+
+1.3 GPU Compute Estimation
+
+Task	GPU Requirement
+Sentence embedding generation	Medium
+BERT fine-tuning	High
+NER training	Medium
+Inference & ranking	Low
+Training Time Estimate (RTX 3060):
+
+Skill NER model: ~2–3 hours
+
+Sentence embedding fine-tuning: ~1–2 hours
+
+Inference per resume: <200 ms
+
+-----
+
+2. Cloud GPU (Optional but Acceptable for NITK)
+
+If local GPU is unavailable:
+
+Platform	GPU Type
+Google Colab Pro	Tesla T4 / A100
+Kaggle Kernels	Tesla P100
+AWS EC2	g4dn.xlarge (T4)
+Azure ML	NVIDIA V100
+Suitable for:
+Model training
+Experiments
+Final evaluation
+
+-----
+
+3. Software Requirements
+
+3.1 Operating System
+
+Ubuntu 20.04 / 22.04 (Preferred)
+
+Windows 11 (WSL recommended)
+
+3.2 Programming Languages
+
+Language : Purpose
+Python 3.8+	Core development
+SQL	Dataset storage (optional)
+
+3.3 Libraries & Frameworks
+
+NLP & ML
+torch
+transformers
+sentence-transformers
+spaCy
+nltk
+scikit-learn
+Deep Learning
+PyTorch (preferred)
+CUDA 11.x
+cuDNN
+Data Handling
+pandas
+numpy
+pdfminer.six
+docx2txt
+Visualization & Explainability
+matplotlib
+seaborn
+SHAP
+LIME
+
+3.4 Model Dependencies
+
+Model	Size
+BERT-base	~420 MB
+SBERT	~90 MB
+spaCy NLP model	~500 MB
+Ensure sufficient disk space (~5–10 GB total)
+
+-----
+
+4. Dataset Requirements
+
+Dataset	Size
+Resume datasets	5k–20k resumes
+Job descriptions	1k–5k
+Skill taxonomy	<100 MB
+Storage required: ~2–5 GB
+
+-----
+
+5. Development Tools
+
+Tool	Purpose
+VS Code / PyCharm	Development
+Jupyter Notebook	Experimentation
+Git	Version control
+Docker (optional)	Environment reproducibility
+
+-----
+
+6. Network Requirements
+
+Internet for:
+
+Model downloads
+Dataset access
+Cloud GPU usage
+Bandwidth: ≥10 Mbps recommended
+
+-----
+
+7. Human Resource Requirements (Group Project)
+
+Role : Responsibility
+ML Engineer	Model development
+NLP Specialist	Skill extraction & embeddings
+Data Engineer	Preprocessing & pipeline
+Research Lead	Evaluation & documentation
+
+-----
+
+8. Cost Estimation (Approx.)
+
+Resource : Cost
+Local GPU (RTX 3060)	₹30k–40k
+Cloud GPU (Colab Pro)	₹800/month
+Software	Free / Open-source
+
+-----
+
+9. Compliance with NITK Standards
+
+Advanced ML models
+GPU utilization
+Research-level experimentation
+Reproducibility
+Scalability
+
+-----
+
+10. Summary
+
+The project can be implemented using:
+Mid-range GPU (RTX 3060) or cloud GPU
+Open-source software stack
+Moderate dataset size
+Standard research-grade ML tools
+
+This setup fully satisfies M.Tech project expectations at NITK and allows scope for future thesis or publication.
