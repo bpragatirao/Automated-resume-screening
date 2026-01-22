@@ -1,0 +1,6 @@
+sentence-transformers
+pdfplumber
+scikit-learn
+numpy
+pandas
+torch
