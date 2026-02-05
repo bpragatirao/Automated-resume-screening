@@ -1,0 +1,273 @@
+Resources and History
+
+1. Mapping the Springer Paper to Our Resume Screening Project
+
+The referenced paper evaluates BERT-based automated essay scoring (AES) in higher education.
+Conceptually, AES and resume screening are closely related NLP tasks:
+
+Essay Scoring (Paper)	Resume Screening (Our Project)
+Essay text	Resume text
+Human grading	Recruiter screening
+Scoring accuracy	Resume–JD relevance score
+Bias across students	Bias across candidates
+Feedback limitation	Skill gap feedback
+Thus, the limitations and lessons from AES models directly apply to resume screening systems.
+
+2. Evolution of Resume Screening Models (Adapted Timeline)
+
+🔹 Pre-2018: Keyword-Based Systems
+
+Rule-based ATS systems
+
+Exact keyword matching
+
+High false negatives
+
+No semantic understanding
+
+🔹 2018–2020: Static Embeddings
+
+Word2Vec, GloVe
+
+Limited context awareness
+
+Poor handling of synonyms and role-based skills
+
+🔹 2020–2023: Transformer-Based Models
+
+BERT, RoBERTa, DistilBERT
+
+Contextual embeddings
+
+Improved resume–JD semantic matching
+
+Still treated resumes as single blocks of text
+
+🔹 2024–2025: Sentence-Level & Skill-Based Models
+
+Sentence-BERT (SBERT)
+
+Skill extraction pipelines
+
+Section-wise similarity (Experience, Skills, Projects)
+
+🔹 2026 (Current State – Similar to the Springer Paper)
+
+Fine-tuned transformer models for:
+
+Resume ranking
+
+Candidate relevance scoring
+
+Partial fairness testing
+
+Limited explainability
+
+3. Latest Drawbacks in Transformer-Based Resume Screening Models
+
+Based on the Springer paper’s findings and their relevance to resume screening, the latest drawbacks are:
+
+❌ 1. Limited Dataset Diversity (Most Critical)
+
+Problem
+
+Resume screening models are trained on:
+
+Small proprietary datasets
+
+Domain-specific resumes (mostly IT roles)
+
+Fails to generalize across:
+
+Different job roles
+
+Resume formats
+
+Cultural writing styles
+
+Impact
+
+Biased candidate ranking
+
+Overfitting to certain resume styles
+
+Penalization of non-standard resumes
+
+❌ 2. Black-Box Decision Making (Lack of Explainability)
+
+Problem
+
+Models output a similarity score without explanation
+
+Recruiters and candidates do not know:
+
+Why a resume was rejected
+
+Which skills mattered most
+
+Impact
+
+Low trust in AI screening systems
+
+Difficult to justify hiring decisions
+
+Poor candidate feedback
+
+❌ 3. Skill Representation Gap
+
+Problem
+
+Transformer embeddings capture semantic similarity
+
+But do not explicitly model skill hierarchies
+
+e.g., “PyTorch” ⟶ “Deep Learning” ⟶ “Machine Learning”
+
+Impact
+
+Missing implicit skills
+
+Incorrect skill gap identification
+
+Over-reliance on surface-level text
+
+❌ 4. Bias Amplification
+
+Problem
+
+Pretrained language models inherit bias from training data
+
+Bias may exist against:
+
+Non-native English resumes
+
+Career gaps
+
+Different formatting styles
+
+Impact
+
+Unfair candidate filtering
+
+Legal and ethical concerns
+
+4. Proposed Optimized Solution for Our Project
+
+✅ Proposed System Architecture Enhancements
+
+🔹 1. Section-Aware Resume Representation (Structural Fix)
+
+Instead of embedding the entire resume as one block:
+
+Proposed Change
+
+Split resume into:
+
+Skills
+
+Experience
+
+Education
+
+Projects
+
+Compute weighted semantic similarity per section
+
+Benefit
+
+Better semantic alignment with job descriptions
+
+Reduced impact of formatting variations
+
+Higher relevance accuracy
+
+🔹 2. Hybrid Skill Extraction + Semantic Matching (Key Innovation)
+
+Proposed Change
+
+Combine:
+
+Transformer embeddings (SBERT)
+
+Rule-based + ontology-driven skill extraction
+
+Use a skill knowledge graph to infer implicit skills
+
+Example
+
+Resume mentions: TensorFlow
+JD requires: Deep Learning
+→ Skill hierarchy maps TensorFlow → Deep Learning
+Benefit
+
+Accurate skill gap analysis
+
+Handles implicit and related skills
+
+Improves fairness
+
+🔹 3. Explainable Resume Screening (XAI Layer)
+
+Inspired by the Springer paper’s limitation:
+
+Proposed Change
+
+Add explainability using:
+
+Attention visualization
+
+SHAP / token importance
+
+Output:
+
+Top matching skills
+
+Missing skills
+
+Section-wise contribution score
+
+Benefit
+
+Transparent decision-making
+
+Recruiter trust
+
+Actionable candidate feedback
+
+🔹 4. Bias-Aware Training & Evaluation
+
+Proposed Change
+
+Evaluate model across:
+
+Resume length
+
+Language proficiency
+
+Formatting variations
+
+Apply:
+
+Balanced sampling
+
+Data augmentation
+
+Regular fairness audits
+
+Benefit
+
+Reduced demographic and stylistic bias
+
+Ethical and scalable deployment
+
+5. Final Thesis-Ready Summary
+
+While transformer-based models such as BERT and Sentence-BERT significantly improve semantic resume–job matching, their effectiveness is limited by dataset bias, lack of explainability, and inadequate skill representation. Inspired by recent findings in automated essay scoring, this project proposes a section-aware, hybrid semantic–skill-based resume screening system with built-in explainability and bias mitigation. The optimized approach enhances accuracy, fairness, and transparency, making it more suitable for real-world recruitment automation.
+
+6. One-Line Problem–Solution Statement (For PPT / Abstract)
+
+Problem:
+Transformer-based resume screening models act as black boxes, suffer from dataset bias, and fail to model implicit skills.
+
+Solution:
+A section-aware, explainable hybrid NLP system combining Sentence-BERT with skill ontology-based inference for fair and transparent resume screening.
