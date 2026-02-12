@@ -1,4 +1,4 @@
-def split_sections(text):
+def split_sections(text: str) -> dict:
     sections = {
         "skills": "",
         "experience": "",
@@ -6,8 +6,8 @@ def split_sections(text):
         "projects": ""
     }
 
-    for key in sections:
-        if key in text:
-            sections[key] = text.split(key)[1][:500]
+    for section in sections:
+        if section in text:
+            sections[section] = text.split(section, 1)[1][:600]
 
     return sections
