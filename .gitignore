@@ -1,4 +1,46 @@
-venv/
+# ignore all dotfiles and dot-directories
+.*
+!.gitignore
+
+# system files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+Icon?
+.DS_Store
+._*
+
+# python cache / artifacts
 __pycache__/
-*.pyc
-.env
+*.py[cod]
+*$py.class
+*.pyo
+*.pyd
+
+# jupyter caches (not notebooks)
+.ipynb_checkpoints/
+
+# virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# build / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+
+# test / coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# editor / ide
+.vscode/
+.idea/
+
+# logs
+*.log
