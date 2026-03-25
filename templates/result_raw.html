@@ -1,0 +1,25 @@
+<!-- templates/result.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Results</title>
+</head>
+<body>
+    <ul>
+      {% for jdname in jd_names %}
+				<h2> JD Filename: {{jdname}}</h2>
+
+				{% for item in result[loop.index0] %}
+
+					<h4>Resume Filename: {{ item.res_name }}</h4>
+						<h4>Score: {{ item.score }}</h4>
+						<h4>Reasoning: </h4>
+						<pre style="white-space: pre-wrap; word-wrap: break-word;">{{ item.feedback }}</pre>
+
+				{% endfor %}
+      {% endfor %}
+    </ul>
+
+    <a href="/">Go Back</a>
+</body>
+</html>

@@ -1,7 +1,10 @@
-from sklearn.metrics.pairwise import cosine_similarity
+import torch
+from tqdm.auto import tqdm
+from sentence_transformers import SentenceTransformer, util
+from sentence_transformers.util import batch_to_device, cos_sim
+import numpy as np
 
-def calculate_similarity(resume_emb, jd_emb):
-    return cosine_similarity([resume_emb], [jd_emb])[0][0]
+model = SentenceTransformer("TechWolf/JobBERT-v2", local_files_only=True)
 
 def encode_batch(jobbert_model, texts):
     features = jobbert_model.tokenize(texts)
@@ -28,11 +31,11 @@ def encode(jobbert_model, texts, batch_size: int = 8):
     original_order = np.argsort(sorted_indices)
     return sorted_embeddings[original_order]
 
-def compatibility_score(model: object, resume: list, jd: list)->list:
+def compatibility_score(resume: list, jd: list)->list:
     job_embeddings = encode(model, jd)
     resume_embeddings = encode(model, resume)
 
     similarities = cos_sim(job_embeddings, resume_embeddings)
-    adj_matrix = ((similarities + 1) / 2)*100
-
+    # similarity value range between [-1, 1], clip it instead of scaling
+    adj_matrix = np.maximum(0, similarities) * 100
     return adj_matrix.tolist()

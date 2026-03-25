@@ -1,391 +1,137 @@
-<!-- templates/index.html
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resume Matcher</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            background: white;
+            padding: 40px 50px;
+            border-radius: 16px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 520px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 35px;
+            font-size: 28px;
+            font-weight: 600;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #34495e;
+            font-size: 15px;
+        }
+
+        input[type="file"] {
+            width: 100%;
+            padding: 12px;
+            border: 2px dashed #bdc3c7;
+            border-radius: 8px;
+            background-color: #f8f9fa;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        input[type="file"]:hover {
+            border-color: #3498db;
+            background-color: #f1f8ff;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #bdc3c7;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        input[type="number"]:focus {
+            border-color: #3498db;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.15);
+        }
+
+        button {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 14px 40px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+            width: 100%;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.3);
+        }
+
+        .info {
+            margin-top: 25px;
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+    </style>
 </head>
 <body>
-    <h2>Upload JD and Resumes</h2>
-    <form action="/upload" method="post" enctype="multipart/form-data">
-        <label>Job Description (pdf):</label><br>
-        <input type="file" name="jd" multiple required><br><br>
-
-        <label>Resumes (multiple pdfs):</label><br>
-        <input type="file" name="resumes" multiple required><br><br>
-
-        <button type="submit">Submit</button>
-    </form>
-</body>
-</html> -->
-<!--
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Resume Screening AI</title>
-
-<style>
-body {
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background: #f5f6fa;
-}
-
-/* HEADER */
-.header {
-    padding: 20px 40px;
-    background: white;
-    font-weight: 600;
-    font-size: 20px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-}
-
-/* MAIN CONTAINER */
-.container {
-    padding: 40px;
-    text-align: center;
-}
-
-/* CARDS */
-.upload-section {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    margin-bottom: 30px;
-}
-
-.card {
-    width: 350px;
-    background: white;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-}
-
-.card h3 {
-    margin-bottom: 10px;
-}
-
-.upload-box {
-    border: 2px dashed #ccc;
-    padding: 30px;
-    border-radius: 10px;
-    margin-top: 15px;
-}
-
-.upload-box p {
-    color: #777;
-    font-size: 14px;
-}
-
-/* BUTTON */
-.btn {
-    margin-top: 15px;
-    padding: 10px 20px;
-    background: #5a67d8;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-}
-
-.btn:hover {
-    background: #434190;
-}
-
-/* CENTER BUTTON */
-.center-btn {
-    margin: 30px 0;
-}
-
-/* EMPTY STATE */
-.empty-box {
-    margin-top: 30px;
-    padding: 40px;
-    background: white;
-    border-radius: 12px;
-    color: #555;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-}
-
-/* FOOTER */
-.footer {
-    text-align: center;
-    margin-top: 40px;
-    color: #888;
-    font-size: 14px;
-}
-</style>
-
-</head>
-
-<body>
-
-<div class="header">
-    🤖 Resume Screening AI
-</div>
-
-<div class="container">
-
-    <form action="/upload" method="post" enctype="multipart/form-data">
-
-        <div class="upload-section">
-
-            <div class="card">
-                <h3>Upload Resumes</h3>
-                <p>Upload multiple PDF files</p>
-
-                <div class="upload-box">
-                    <p>Drag & drop resumes here</p>
-                    <p>PDFs only. Multiple files supported.</p>
-
-                    <input type="file" name="resumes" multiple required>
-                    <br>
-                    <button type="button" class="btn">Browse Files</button>
-                </div>
+    <div class="container">
+        <h2>Resume Score Evaluator</h2>
+        
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            
+            <div class="form-group">
+                <label>Job Description</label>
+                <input type="file" name="jd" multiple accept=".pdf" required>
             </div>
 
-            <div class="card">
-                <h3>Upload Job Descriptions</h3>
-                <p>Upload the role’s job description(s)</p>
-
-                <div class="upload-box">
-                    <p>Drag & drop job descriptions here</p>
-                    <p>PDF or text supported.</p>
-
-                    <input type="file" name="jd" multiple required>
-                    <br>
-                    <button type="button" class="btn">Browse Files</button>
-                </div>
+            <div class="form-group">
+                <label>Resumes</label>
+                <input type="file" name="resumes" multiple accept=".pdf" required>
             </div>
 
-        </div>
+            <div class="form-group">
+                <label>Number of Resumes to Shortlist</label>
+                <input type="number" 
+                       name="top_n" 
+                       value="3" 
+                       min="1" 
+                       max="100" 
+                       required>
+            </div>
 
-        <div class="center-btn">
-            <button type="submit" class="btn" style="padding:12px 30px; font-size:16px;">
-                Calculate Score
-            </button>
-        </div>
+            <button type="submit">Get Score</button>
+        </form>
 
-    </form>
-
-    <div class="empty-box">
-        <h3>Upload resumes and job descriptions to begin</h3>
-        <p>The AI will analyze matches and rank candidates automatically.</p>
+        <p class="info">Supports multiple jd and resume uploads • PDF only</p>
     </div>
-
-</div>
-
-<div class="footer">
-    © 2026 Resume Screening AI
-</div>
-
-</body>
-</html>-->
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Resume Screening AI</title>
-
-<style>
-body {
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background: #f5f6fa;
-}
-
-/* HEADER */
-.header {
-    padding: 20px 40px;
-    background: white;
-    font-weight: 600;
-    font-size: 20px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-}
-
-/* MAIN */
-.container {
-    padding: 40px;
-    text-align: center;
-}
-
-/* CARDS */
-.upload-section {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    margin-bottom: 30px;
-    flex-wrap: wrap;
-}
-
-.card {
-    width: 350px;
-    background: white;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-}
-
-.card h3 {
-    margin-bottom: 10px;
-}
-
-/* UPLOAD BOX */
-.upload-box {
-    border: 2px dashed #ccc;
-    padding: 30px;
-    border-radius: 10px;
-    margin-top: 15px;
-    position: relative;
-}
-
-.upload-box p {
-    color: #777;
-    font-size: 14px;
-}
-
-/* HIDE DEFAULT INPUT */
-.upload-box input[type="file"] {
-    display: none;
-}
-
-/* CUSTOM BUTTON */
-.upload-btn {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 10px 16px;
-    background: #5a67d8;
-    color: white;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 14px;
-}
-
-.upload-btn:hover {
-    background: #434190;
-}
-
-/* FILE COUNT */
-.file-count {
-    margin-top: 10px;
-    font-size: 13px;
-    color: #444;
-}
-
-/* SUBMIT BUTTON */
-.submit-btn {
-    margin-top: 30px;
-    padding: 12px 30px;
-    font-size: 16px;
-    background: #5a67d8;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-}
-
-.submit-btn:hover {
-    background: #434190;
-}
-
-/* EMPTY STATE */
-.empty-box {
-    margin-top: 30px;
-    padding: 40px;
-    background: white;
-    border-radius: 12px;
-    color: #555;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-}
-
-/* FOOTER */
-.footer {
-    text-align: center;
-    margin-top: 40px;
-    color: #888;
-    font-size: 14px;
-}
-</style>
-</head>
-
-<body>
-
-<div class="header">
-    🤖 Resume Screening AI
-</div>
-
-<div class="container">
-
-<form action="/upload" method="post" enctype="multipart/form-data">
-
-    <div class="upload-section">
-
-        <!-- RESUME UPLOAD -->
-        <div class="card">
-            <h3>Upload Resumes</h3>
-            <p>Upload multiple PDF files</p>
-
-            <div class="upload-box">
-                <p>Drag & drop resumes here</p>
-                <p>PDF files only</p>
-
-                <label class="upload-btn">
-                    Browse Files
-                    <input type="file" name="resumes" multiple required onchange="updateCount(this, 'resumeCount')">
-                </label>
-
-                <div id="resumeCount" class="file-count"></div>
-            </div>
-        </div>
-
-        <!-- JD UPLOAD -->
-        <div class="card">
-            <h3>Upload Job Descriptions</h3>
-            <p>Upload JD PDFs</p>
-
-            <div class="upload-box">
-                <p>Drag & drop job descriptions</p>
-                <p>PDF files only</p>
-
-                <label class="upload-btn">
-                    Browse Files
-                    <input type="file" name="jd" multiple required onchange="updateCount(this, 'jdCount')">
-                </label>
-
-                <div id="jdCount" class="file-count"></div>
-            </div>
-        </div>
-
-    </div>
-
-    <!-- SUBMIT -->
-    <button type="submit" class="submit-btn">
-        🚀 Calculate Matching
-    </button>
-
-</form>
-
-<!-- EMPTY INFO -->
-<div class="empty-box">
-    <h3>Upload resumes and job descriptions to begin</h3>
-    <p>The AI will analyze matches and rank candidates automatically.</p>
-</div>
-
-</div>
-
-<div class="footer">
-    © 2026 Resume Screening AI
-</div>
-
-<!-- SCRIPT -->
-<script>
-function updateCount(input, id) {
-    const count = input.files.length;
-    document.getElementById(id).innerText = count + " file(s) selected";
-}
-</script>
-
 </body>
 </html>
