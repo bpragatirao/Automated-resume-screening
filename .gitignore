@@ -11,7 +11,7 @@ Icon?
 ._*
 
 # python cache / artifacts
-__pycache__/
+**/__pycache__/*
 *.py[cod]
 *$py.class
 *.pyo
@@ -44,3 +44,5 @@ htmlcov/
 
 # logs
 *.log
+
+uploads/
