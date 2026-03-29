@@ -37,5 +37,5 @@ def compatibility_score(resume: list, jd: list)->list:
 
     similarities = cos_sim(job_embeddings, resume_embeddings)
     # similarity value range between [-1, 1], clip it instead of scaling
-    adj_matrix = np.maximum(0, similarities) * 100
+    adj_matrix = (torch.clamp(similarities, min=0) * 100).int()
     return adj_matrix.tolist()
