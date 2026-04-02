@@ -62,7 +62,7 @@ def upload():
         JD_LIST.append((os.path.basename(p), extract_text(p)))
 
     for i, t in enumerate(resume_texts):
-        RES_LIST.append((f"job_description_text_{i}", t))
+        RES_LIST.append((f"resume_text_{i}", t))
     for p in resume_paths:
         RES_LIST.append((os.path.basename(p), extract_text(p)))
 
