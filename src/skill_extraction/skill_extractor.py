@@ -10,7 +10,6 @@ def extract_skills(text, skills_file):
 
 def fetch_feedback(resume: object,jd: object, score: int):
     prompt = f"""
-    Score: {score}%
     Task:
     Provide ONE concise feedback line (max 30 words).
 
@@ -19,13 +18,16 @@ def fetch_feedback(resume: object,jd: object, score: int):
     - Mention 1–2 missing skills
     - No generic phrases
     - Focus only on technical/domain skills
+    - response should be in professional tone.
 
-    Example:
-    "C#, SQL, ASP.NET matched; missing Azure and REST API experience."
+    Here's the Info:
+    Score: {score}
+    Job Description: {jd}
+    Resume: {resume}
     """
     
     payload = {
-        "model": "gemma:2b",
+        "model": "gemma4:e4b",
         "prompt": prompt,
         "stream": False
     }
