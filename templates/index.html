@@ -9,129 +9,516 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             margin: 0;
-            padding: 0;
+            padding: 20px;
             min-height: 100vh;
+            color: #2c3e50;
+        }
+
+        .container {
+            max-width: 980px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 30px 40px;
+            text-align: center;
+        }
+
+        .header h1 { 
+            margin: 0; 
+            font-size: 30px; 
+            font-weight: 600; 
+        }
+
+        .main-tabs {
+            display: flex;
+            background: #f8f9fa;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .main-tab {
+            flex: 1;
+            padding: 18px;
+            background: none;
+            border: none;
+            font-size: 17px;
+            font-weight: 600;
+            color: #7f8c8d;
+            cursor: pointer;
+        }
+
+        .main-tab.active {
+            color: #2c3e50;
+            background: white;
+            border-bottom: 4px solid #3498db;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 25px 40px 0px;
+        }
+
+        .tab-content.active { 
+            display: block; 
+        }
+
+        .section { 
+            margin-bottom: 45px; 
+        }
+
+        h3 { 
+            margin: 0 0 18px 0; 
+            color: #2c3e50; 
+        }
+
+        .upload-zone {
+            border: 3px dashed #bdc3c7;
+            border-radius: 12px;
+            padding: 45px 20px;
+            text-align: center;
+            background: #f8f9fa;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .upload-zone:hover, .upload-zone.dragover {
+            border-color: #3498db;
+            background: #f1f8ff;
+        }
+
+        /* Text Item */
+        .text-item {
+            margin-bottom: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            overflow: hidden;
+            background: white;
+        }
+
+        .text-header {
+            background: #f8f9fa;
+            padding: 14px 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .text-header:hover { background: #ecf0f1; }
+
+        .text-title { font-weight: 600; color: #34495e; }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .expand-btn {
+            font-size: 22px;
+            font-weight: bold;
+            color: #7f8c8d;
+            transition: transform 0.3s ease;
+            width: 28px;
+            text-align: center;
+        }
+
+        .text-item.expanded .expand-btn {
+            transform: rotate(90deg);
+        }
+
+        .delete-btn {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            font-size: 16px;
+            cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        .container {
-            background: white;
-            padding: 40px 50px;
-            border-radius: 16px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 520px;
+        .delete-btn:hover { background: #c0392b; }
+
+        .text-content {
+            padding: 0 18px 18px;
+            display: none;
+        }
+
+        .text-item.expanded .text-content {
+            display: block;
+        }
+
+        textarea {
+            width: 97%;
+            min-height: 100px;
+            padding: 14px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 15px;
+            line-height: 1.6;
+            resize: vertical;
+        }
+
+        /* Common Shortlist Section */
+        .common-controls {
+            margin: 15px 40px 30px;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 12px;
             text-align: center;
         }
 
-        h2 {
+        .shortlist-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .shortlist-label {
+            font-size: 17px;
+            font-weight: 600;
             color: #2c3e50;
-            margin-bottom: 35px;
-            font-size: 28px;
-            font-weight: 600;
-        }
-
-        .form-group {
-            margin-bottom: 25px;
-            text-align: left;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: #34495e;
-            font-size: 15px;
-        }
-
-        input[type="file"] {
-            width: 100%;
-            padding: 12px;
-            border: 2px dashed #bdc3c7;
-            border-radius: 8px;
-            background-color: #f8f9fa;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        input[type="file"]:hover {
-            border-color: #3498db;
-            background-color: #f1f8ff;
+            margin: 0;
         }
 
         input[type="number"] {
+            width: 140px;
+            padding: 12px;
+            font-size: 17px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .submit-btn {
             width: 100%;
-            padding: 12px 16px;
-            border: 2px solid #bdc3c7;
-            border-radius: 8px;
-            font-size: 16px;
-            transition: all 0.3s ease;
-        }
-
-        input[type="number"]:focus {
-            border-color: #3498db;
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.15);
-        }
-
-        button {
-            background: linear-gradient(135deg, #3498db, #2980b9);
+            max-width: 400px;
+            margin: 20px auto;
+            display: block;
+            padding: 16px;
+            font-size: 18px;
+            background: linear-gradient(135deg, #27ae60, #219653);
             color: white;
-            padding: 14px 40px;
             border: none;
-            border-radius: 8px;
-            font-size: 16px;
+            border-radius: 10px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 15px;
-            width: 100%;
         }
 
-        button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.3);
-        }
-
-        .info {
-            margin-top: 25px;
-            font-size: 14px;
-            color: #7f8c8d;
+        .note { 
+            font-size: 13.5px; 
+            color: #7f8c8d; 
+            margin-top: 8px; 
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h2>Resume Score Evaluator</h2>
-        
-        <form action="/upload" method="post" enctype="multipart/form-data">
+        <div class="header">
+            <h1>Resume Matcher</h1>
+        </div>
+
+        <!-- Main Tabs -->
+        <div class="main-tabs">
+            <button class="main-tab active" onclick="switchTab(0)">File Upload</button>
+            <button class="main-tab" onclick="switchTab(1)">Paste Text</button>
+        </div>
+
+        <!-- File Upload Tab -->
+        <div class="tab-content active" id="tab-files">
+            <div class="section">
+                <h3>Job Descriptions (PDF or Images)</h3>
+								<div class="upload-zone" id="jd-dropzone">
+									Drag & drop JDs or click to select<br>
+									<small class="note">PDF, PNG, JPG, JPEG • Multiple allowed</small>
+								</div>
+								<input type="file" id="jd" name="jd" multiple accept=".pdf,.png,.jpg,.jpeg" style="display:none;">
+            </div>
+
+            <div class="section">
+                <h3>Resumes (PDF or Images)</h3>
+								<div class="upload-zone" id="resume-dropzone">
+									Drag & drop Resumes or click to select<br>
+									<small class="note">PDF, PNG, JPG, JPEG • Multiple allowed</small>
+								</div>
+								<input type="file" id="resumes" name="resumes" multiple accept=".pdf,.png,.jpg,.jpeg" style="display:none;">
+            </div>
+        </div>
+
+        <!-- Paste Text Tab -->
+        <div class="tab-content" id="tab-text">
+            <div class="section">
+                <h3>JD Texts</h3>
+                <div id="jd-texts-container"></div>
+                <button onclick="addJDTextBox()">+ Add JD Text</button>
+            </div>
+
+            <div class="section">
+                <h3>Resume Texts</h3>
+                <div id="resume-texts-container"></div>
+                <button onclick="addResumeTextBox()">+ Add Resume Text</button>
+            </div>
+        </div>
+
+        <!-- Common Controls -->
+        <div class="common-controls">
+            <div class="shortlist-row">
+                <span class="shortlist-label">Number of Resumes to Shortlist</span>
+                <input type="number" id="resume_count" value="3" min="1" max="50">
+            </div>
             
-            <div class="form-group">
-                <label>Job Description</label>
-                <input type="file" name="jd" multiple accept=".pdf" required>
-            </div>
-
-            <div class="form-group">
-                <label>Resumes</label>
-                <input type="file" name="resumes" multiple accept=".pdf" required>
-            </div>
-
-            <div class="form-group">
-                <label>Number of Resumes to Shortlist</label>
-                <input type="number" 
-                       name="top_n" 
-                       value="3" 
-                       min="1" 
-                       max="100" 
-                       required>
-            </div>
-
-            <button type="submit">Get Score</button>
-        </form>
-
-        <p class="info">Supports multiple jd and resume uploads • PDF only</p>
+            <button class="submit-btn" onclick="submitAll()">Evaluate</button>
+        </div>
     </div>
+
+		<script>
+			let jdTextCount = 0;
+			let resumeTextCount = 0;
+
+			// Store uploaded files
+			let jdFiles = [];
+			let resumeFiles = [];
+
+			function switchTab(n) {
+				document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+				document.querySelectorAll('.main-tab').forEach(el => el.classList.remove('active'));
+				document.getElementById('tab-files').classList.toggle('active', n === 0);
+				document.getElementById('tab-text').classList.toggle('active', n === 1);
+				document.querySelectorAll('.main-tab')[n].classList.add('active');
+			}
+
+			// ====================== FILE UPLOAD HANDLING ======================
+
+			function setupDropZone(dropzoneId, inputId, filesArray, type) {
+				const dropzone = document.getElementById(dropzoneId);
+				const input = document.getElementById(inputId);
+
+				// Remove any existing inline onclick to prevent double trigger
+				dropzone.removeAttribute('onclick');
+
+				// Single Click Handler
+				dropzone.addEventListener('click', (e) => {
+					// Prevent triggering if clicking on child elements accidentally
+					if (e.target.tagName !== 'INPUT') {
+						input.click();
+					}
+				});
+
+				// File input change
+				input.addEventListener('change', (e) => {
+					if (e.target.files.length > 0) {
+						handleFiles(e.target.files, filesArray, type);
+					}
+					e.target.value = ''; // Reset so same file can be selected again
+				});
+
+				// Drag and Drop
+				dropzone.addEventListener('dragover', (e) => {
+					e.preventDefault();
+					dropzone.classList.add('dragover');
+				});
+
+				dropzone.addEventListener('dragleave', () => {
+					dropzone.classList.remove('dragover');
+				});
+
+				dropzone.addEventListener('drop', (e) => {
+					e.preventDefault();
+					dropzone.classList.remove('dragover');
+					if (e.dataTransfer.files.length > 0) {
+						handleFiles(e.dataTransfer.files, filesArray, type);
+					}
+				});
+			}
+
+			function handleFiles(files, filesArray, type) {
+				for (let file of files) {
+					const validTypes = ['application/pdf', 'image/png', 'image/jpeg', 'image/jpg'];
+					const isValid = validTypes.includes(file.type) || 
+						file.name.toLowerCase().match(/\.(pdf|png|jpg|jpeg)$/);
+
+					if (!isValid) {
+						alert(`Invalid file: ${file.name}\nOnly PDF, PNG, JPG, JPEG are allowed.`);
+						continue;
+					}
+
+					// Optional: Prevent duplicate files by name
+					const alreadyExists = filesArray.some(f => f.name === file.name && f.size === file.size);
+					if (alreadyExists) {
+						if (!confirm(`${file.name} is already uploaded. Add again?`)) continue;
+					}
+
+					filesArray.push(file);
+				}
+
+				showUploadedFiles(type);
+			}
+
+			function showUploadedFiles(type) {
+				const parent = document.getElementById(type === 'jd' ? 'jd-dropzone' : 'resume-dropzone').parentElement;
+
+				// Remove previous file list
+				const oldList = document.getElementById(type + '-file-list');
+				if (oldList) oldList.remove();
+
+				const files = type === 'jd' ? jdFiles : resumeFiles;
+				if (files.length === 0) return;
+
+				const container = document.createElement('div');
+				container.id = type + '-file-list';
+				container.style.marginTop = '15px';
+				container.style.fontSize = '14px';
+
+				container.innerHTML = `<strong>Uploaded ${type.toUpperCase()}s (${files.length}):</strong><br>`;
+
+				files.forEach((file, index) => {
+					const fileDiv = document.createElement('div');
+					fileDiv.style.cssText = `
+									display: flex; 
+									justify-content: space-between; 
+									align-items: center; 
+									padding: 8px 12px; 
+									background: #f1f8ff; 
+									margin: 5px 0; 
+									border-radius: 8px;
+									border: 1px solid #bde0fe;
+							`;
+					fileDiv.innerHTML = `
+									<span style="flex:1;">📄 ${file.name} <small>(${(file.size/1024).toFixed(1)} KB)</small></span>
+									<button onclick="removeFile(${index}, '${type}'); event.stopImmediatePropagation();" 
+													style="background:#e74c3c; color:white; border:none; width:26px; height:26px; border-radius:50%; cursor:pointer; font-size:16px;">×</button>
+							`;
+					container.appendChild(fileDiv);
+				});
+
+				parent.appendChild(container);
+			}
+
+			function removeFile(index, type) {
+				if (type === 'jd') jdFiles.splice(index, 1);
+				else resumeFiles.splice(index, 1);
+
+				showUploadedFiles(type);
+			}
+
+			// ====================== TEXT FUNCTIONS (unchanged) ======================
+
+			function addJDTextBox() {
+				jdTextCount++;
+				const container = document.getElementById('jd-texts-container');
+				const div = document.createElement('div');
+				div.className = 'text-item';
+				div.innerHTML = `
+								<div class="text-header" onclick="toggleExpand(this)">
+										<span class="text-title">JD Text ${jdTextCount}</span>
+										<div class="header-actions">
+												<button class="delete-btn" onclick="deleteTextBox(this); event.stopImmediatePropagation();">×</button>
+												<span class="expand-btn">›</span>
+										</div>
+								</div>
+								<div class="text-content">
+										<textarea class="jd-text-input" placeholder="Paste Job Description text here..."></textarea>
+								</div>
+						`;
+				container.appendChild(div);
+			}
+
+			function addResumeTextBox() {
+				resumeTextCount++;
+				const container = document.getElementById('resume-texts-container');
+				const div = document.createElement('div');
+				div.className = 'text-item';
+				div.innerHTML = `
+								<div class="text-header" onclick="toggleExpand(this)">
+										<span class="text-title">Resume Text ${resumeTextCount}</span>
+										<div class="header-actions">
+												<button class="delete-btn" onclick="deleteTextBox(this); event.stopImmediatePropagation();">×</button>
+												<span class="expand-btn">›</span>
+										</div>
+								</div>
+								<div class="text-content">
+										<textarea class="resume-text-input" placeholder="Paste Resume / CV text here..."></textarea>
+								</div>
+						`;
+				container.appendChild(div);
+			}
+
+			function toggleExpand(header) {
+				const item = header.parentElement;
+				item.classList.toggle('expanded');
+			}
+
+			function deleteTextBox(btn) {
+				const item = btn.closest('.text-item');
+				if (item) item.remove();
+			}
+
+			// ====================== SUBMIT FUNCTION ======================
+
+			async function submitAll() {
+				const formData = new FormData();
+
+				formData.append('resume_count', document.getElementById('resume_count').value || 5);
+
+				jdFiles.forEach(file => formData.append('jd_files', file));
+				resumeFiles.forEach(file => formData.append('resume_files', file));
+
+				document.querySelectorAll('.jd-text-input').forEach(ta => {
+					if (ta.value.trim()) formData.append('jd_texts', ta.value.trim());
+				});
+				document.querySelectorAll('.resume-text-input').forEach(ta => {
+					if (ta.value.trim()) formData.append('resume_texts', ta.value.trim());
+				});
+
+				const btn = document.querySelector('.submit-btn');
+				const original = btn.textContent;
+				btn.textContent = "Processing...";
+				btn.disabled = true;
+
+				try {
+					const response = await fetch('/upload', {
+						method: 'POST',
+						body: formData
+					});
+
+					if (response.redirected) {
+						window.location.href = response.url;
+					} else if (response.ok) {
+						window.location.href = '/results';
+					} else {
+						alert("Processing failed");
+					}
+				} catch (e) {
+					console.error(e);
+					alert("Error connecting to server");
+				} finally {
+					btn.textContent = original;
+					btn.disabled = false;
+				}
+			}
+
+			// ====================== INITIALIZE ======================
+			window.onload = function() {
+				setupDropZone('jd-dropzone', 'jd', jdFiles, 'jd');
+				setupDropZone('resume-dropzone', 'resumes', resumeFiles, 'resume');
+
+				addJDTextBox();
+				addResumeTextBox();
+			};
+		</script>
 </body>
 </html>

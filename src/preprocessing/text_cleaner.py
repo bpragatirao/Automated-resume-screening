@@ -1,5 +1,7 @@
 import re
 from pypdf import PdfReader
+import easyocr
+import os
 
 def clean_text(text):
     if not isinstance(text, str):
@@ -22,3 +24,21 @@ def pdf_to_text(path: str) -> str:
         if t:
             text.append(t)
     return "\n".join(text)
+
+def ocr_to_text(path):
+    return easyocr.Reader(['en']).readtext(path, detail=0)
+
+def extract_text(path)->str:
+    ext = os.path.splitext(path)[1].lower()
+    result = "" 
+    if ext == ".pdf":
+        result = pdf_to_text(path)
+    elif ext in [".png", ".jpg", ".jpeg", ".bmp", ".tiff", ".webp"]:
+        result = ocr_to_text(path)
+    else:
+        raise ValueError(f"Unsupported file type: {ext}")
+
+    return clean_text(result)
+
+
+

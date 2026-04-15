@@ -1,5 +1,6 @@
 pdfplumber
 regex
+easyocr
 numpy==1.26.4
 torch==2.4.0
 transformers==4.41.2
