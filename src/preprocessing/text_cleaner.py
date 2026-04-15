@@ -3,6 +3,8 @@ from pypdf import PdfReader
 import easyocr
 import os
 
+_easy_ocr_reader = easyocr.Reader(['en'])
+
 def clean_text(text):
     if not isinstance(text, str):
         return ""
@@ -26,7 +28,8 @@ def pdf_to_text(path: str) -> str:
     return "\n".join(text)
 
 def ocr_to_text(path):
-    return easyocr.Reader(['en']).readtext(path, detail=0)
+    text = _easy_ocr_reader.readtext(path, detail=0)
+    return "".join(text)
 
 def extract_text(path)->str:
     ext = os.path.splitext(path)[1].lower()

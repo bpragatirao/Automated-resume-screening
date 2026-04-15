@@ -13,7 +13,7 @@ from src.preprocessing.text_cleaner import clean_text,extract_text
 from src.matching.similarity_calculator import compatibility_score
 
 app = Flask(__name__)
-app.config["UPLOAD_FOLDER"] = "uploads"
+app.config["UPLOAD_FOLDER"] = os.path.join(app.root_path, "uploads")
 
 os.makedirs(app.config["UPLOAD_FOLDER"], exist_ok=True)
 
@@ -113,4 +113,4 @@ def get_feedback():
     })
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port='5000', debug=False)
