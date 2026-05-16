@@ -1,6 +1,6 @@
 # Automated Resume Screening and Skill Gap Analysis Using NLP
 
-An NLP-powered recruitment automation system that utilizes Transformer-based models (BERT/S-BERT) for semantic resume screening, skill extraction, and automated skill gap analysis.
+An NLP-powered recruitment automation system that utilizes Transformer-based model (S-BERT) for semantic resume screening, skill extraction, and automated skill gap analysis and reason generation through LLM.
 
 ## 📌 Project Overview
 The recruitment process often involves manual screening of a large number of resumes, making it time-consuming and prone to human bias. This project addresses these limitations by leveraging **Natural Language Processing (NLP)** and deep learning techniques to automate resume screening and identify skill gaps. By using transformer-based models, the system moves beyond traditional keyword matching to capture true semantic relevance and contextual skill representation.
